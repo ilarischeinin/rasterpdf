@@ -1,0 +1,16 @@
+Package: rasterpdf
+Title: Plot Raster Graphics in PDFs
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ilari",
+           family = "Scheinin",
+           role = c("aut", "cre"),
+           email = "ilari.scheinin+rasterpdf@gmail.com",
+           comment = c(ORCID = "0000-0002-4696-9066"))
+Description: Plot raster graphics inside PDF files.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    png
