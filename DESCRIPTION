@@ -17,4 +17,5 @@ Imports:
     png
 Suggests: 
     covr,
+    lintr,
     testthat
