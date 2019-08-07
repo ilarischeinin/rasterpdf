@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/ilarischeinin/rasterpdf.svg?branch=master)](https://travis-ci.org/ilarischeinin/rasterpdf)
+[![Codecov test coverage](https://codecov.io/gh/ilarischeinin/rasterpdf/branch/master/graph/badge.svg)](https://codecov.io/gh/ilarischeinin/rasterpdf?branch=master)
 <!-- badges: end -->
 
 The goal of rasterpdf is to plot raster graphics inside PDF files. This is

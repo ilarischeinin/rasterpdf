@@ -16,4 +16,5 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     png
 Suggests: 
+    covr,
     testthat
