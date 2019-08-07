@@ -26,7 +26,7 @@ raster_pdf <- function(filename = "Rplots.pdf",
     width <- width / 25.4
     height <- height / 25.4
   } else if (units == "px") {
-    width = width / res
+    width <- width / res
     height <- height / res
   }
 

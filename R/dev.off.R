@@ -7,7 +7,7 @@
 #' @export
 dev.off <- function(which = grDevices::dev.cur()) {
   device <- raster_pdf_device(which = which)
-  if(is.null(device)) {
+  if (is.null(device)) {
     return(grDevices::dev.off(which = which))
   }
   raster_pdf_device(device = NULL)
@@ -23,7 +23,7 @@ dev.off <- function(which = grDevices::dev.cur()) {
   png_file_regexp <-
     sub(pattern = "%05i", replacement = "[0-9]{5,}", x = device$pngs)
 
-  png_files <- 
+  png_files <-
     list.files(
       path = dirname(png_file_regexp),
       pattern = basename(png_file_regexp),
