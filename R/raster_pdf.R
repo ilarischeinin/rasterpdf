@@ -18,17 +18,8 @@ raster_pdf <- function(filename = "Rplots.pdf",
                        ...) {
 
   units <- match.arg(units)
-
-  if (units == "cm") {
-    width <- width / 2.54
-    height <- height / 2.54
-  } else if (units == "mm") {
-    width <- width / 25.4
-    height <- height / 25.4
-  } else if (units == "px") {
-    width <- width / res
-    height <- height / res
-  }
+  width <- convert_to_inches(width, units = units, res = res)
+  height <- convert_to_inches(height, units = units, res = res)
 
   pngs <- tempfile(pattern = "raster_pdf-", fileext = "-%05i.png")
 
