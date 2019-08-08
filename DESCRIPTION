@@ -18,4 +18,5 @@ Imports:
 Suggests: 
     covr,
     lintr,
+    ragg,
     testthat

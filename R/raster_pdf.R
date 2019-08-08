@@ -7,6 +7,7 @@
 #' @param height height
 #' @param units units
 #' @param res res
+#' @param fun fun
 #' @param ... ...
 #'
 #' @export
@@ -15,6 +16,7 @@ raster_pdf <- function(filename = "Rplots.pdf",
                        height = 7,
                        units = c("in", "cm", "mm", "px"),
                        res = 72L,
+                       fun = grDevices::png,
                        ...) {
 
   units <- match.arg(units)
@@ -31,7 +33,8 @@ raster_pdf <- function(filename = "Rplots.pdf",
       height = height
     )
 
-  grDevices::png(
+  raster_function <- match.fun(fun)
+  raster_function(
     filename = pngs,
     width = width,
     height = height,
@@ -41,4 +44,18 @@ raster_pdf <- function(filename = "Rplots.pdf",
   )
 
   raster_pdf_device(device = device)
+}
+
+#' @rdname raster_pdf
+#' @export
+agg_pdf <- function(...) {
+  if (requireNamespace("ragg", quietly = TRUE)) {
+    raster_pdf(..., fun = ragg::agg_png)
+  } else {
+    warning(
+      "Package \"ragg\" not availabe; falling back to grDevices::png().",
+      call. = FALSE
+    )
+    raster_pdf(...)
+  }
 }

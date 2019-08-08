@@ -2,10 +2,14 @@
 % Please edit documentation in R/raster_pdf.R
 \name{raster_pdf}
 \alias{raster_pdf}
+\alias{agg_pdf}
 \title{raster_pdf}
 \usage{
 raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
-  units = c("in", "cm", "mm", "px"), res = 72L, ...)
+  units = c("in", "cm", "mm", "px"), res = 72L, fun = grDevices::png,
+  ...)
+
+agg_pdf(...)
 }
 \arguments{
 \item{filename}{filename}
@@ -17,6 +21,8 @@ raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
 \item{units}{units}
 
 \item{res}{res}
+
+\item{fun}{fun}
 
 \item{...}{...}
 }
