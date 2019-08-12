@@ -6,8 +6,8 @@
 \title{raster_pdf}
 \usage{
 raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
-  units = c("in", "cm", "mm", "px"), res = 72L, fun = grDevices::png,
-  ...)
+  units = c("in", "cm", "mm", "px"), res = 72L,
+  png_function = grDevices::png, ...)
 
 agg_pdf(...)
 }
@@ -22,7 +22,7 @@ agg_pdf(...)
 
 \item{res}{res}
 
-\item{fun}{fun}
+\item{png_function}{png_function}
 
 \item{...}{...}
 }
