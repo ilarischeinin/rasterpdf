@@ -35,7 +35,7 @@ dev.off <- function(which = grDevices::dev.cur()) {
     function(png_file) {
       png_plot <- png::readPNG(png_file, native = TRUE)
       graphics::plot.new()
-      usr <- par("usr")
+      usr <- graphics::par("usr")
       graphics::rasterImage(
         image = png_plot,
         xleft = usr[1L],
