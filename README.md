@@ -10,9 +10,9 @@
 
 `rasterpdf` is an R package to plot raster graphics inside PDF files. This is
 useful when one needs multipage documents, but the plots contain so many
-individual elements that use of vector graphics (as `grDevices::pdf() does)`
+individual elements that use of vector graphics (as `grDevices::pdf()` does)
 results in inconveniently large file sizes. Internally, `rasterpdf` plots each
-individual page as a png, and then combines them in one PDF file.
+individual page as a PNG, and then combines them in one PDF file.
 
 ## Installation
 
@@ -48,7 +48,7 @@ dev.off()
 
 The output size and resolution can be set with parameters `width`, `height`,
 `units`, and `res`. The default is 7 x 7 inches with 72 dpi. Any other
-parameters (`...`) are passed through to the png device function, which by
+parameters (`...`) are passed through to the PNG device function, which by
 default is `grDevices::png()`. It is also possible to use another function,
 such as `ragg::agg_png()`. The package also contains function `agg_pdf(...)`,
 which is a shorthand for `raster_pdf(..., png_function = ragg::agg_pdf)`.
