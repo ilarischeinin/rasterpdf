@@ -32,10 +32,18 @@ dev.off <- function(which = grDevices::dev.cur()) {
 
   lapply(
     png_files,
-    function(.page) {
-      png_plot <- png::readPNG(.page)
+    function(png_file) {
+      png_plot <- png::readPNG(png_file, native = TRUE)
       graphics::plot.new()
-      graphics::rasterImage(png_plot, 0, 0, 1, 1)
+      usr <- par("usr")
+      graphics::rasterImage(
+        image = png_plot,
+        xleft = usr[1L],
+        ybottom = usr[3L],
+        xright = usr[2L],
+        ytop = usr[4L],
+        interpolate = FALSE
+      )
     }
   )
 
