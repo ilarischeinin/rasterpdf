@@ -35,7 +35,7 @@ plot(EuStockMarkets)
 dev.off()
 ```
 
-Or with `ggplot2`:
+Or similarly with `ggplot2`:
 
 ```r
 library(ggplot2)
@@ -47,7 +47,7 @@ dev.off()
 ```
 
 The output size and resolution can be set with parameters `width`, `height`,
-`units`, and `res`. The default is 7 x 7 inches with 72 dpi. Any other
+`units`, and `res`. The default is 7 x 7 inches and 72 ppi. Any other
 parameters (`...`) are passed through to the PNG device function, which by
 default is `grDevices::png()`. It is also possible to use another function,
 such as `ragg::agg_png()`. The package also contains function `agg_pdf(...)`,
