@@ -3,7 +3,7 @@
 \name{raster_pdf}
 \alias{raster_pdf}
 \alias{agg_pdf}
-\title{raster_pdf}
+\title{Raster PDF graphics device (with PNG pages)}
 \usage{
 raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
   units = c("in", "cm", "mm", "px"), res = 72L,
@@ -12,20 +12,36 @@ raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
 agg_pdf(...)
 }
 \arguments{
-\item{filename}{filename}
+\item{filename}{A character string of the output file name.}
 
-\item{width}{width}
+\item{width}{Page width.}
 
-\item{height}{height}
+\item{height}{Page height.}
 
-\item{units}{units}
+\item{units}{The units in which \code{height} and \code{weight} are given. Can be
+\code{in} (inches, the default), \code{cm}, \code{mm}, or \code{px} (pixels).}
 
-\item{res}{res}
+\item{res}{The resolution in ppi.}
 
-\item{png_function}{png_function}
+\item{png_function}{A PNG device function. Default is \code{\link[grDevices:png]{grDevices::png()}}.}
 
-\item{...}{...}
+\item{...}{Further arguments passed through to the PNG device function
+specified in \code{png_function}.}
 }
 \description{
-lorem ipsum
+Open a graphics device for raster PDF files. Internally, a PNG device is
+used for the individual pages, which are then combined into one PDF file.
+}
+\details{
+\code{agg_pdf(...)} is shorthand for
+\code{raster_pdf(..., png_function = ragg::agg_png)}.
+}
+\examples{
+raster_pdf(tempfile(fileext = ".pdf"))
+plot(iris)
+dev.off()
+
+}
+\seealso{
+\code{\link[grDevices:pdf]{grDevices::pdf()}}, \code{\link[grDevices:png]{grDevices::png()}}, \code{\link[ragg:agg_png]{ragg::agg_png()}}
 }

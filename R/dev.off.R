@@ -1,8 +1,18 @@
-#' dev.off
+#' Shut down a graphics device
 #'
-#' lorem ipsum
+#' Please see the manual page for [grDevices::dev.off()]. Package `rasterpdf`
+#' overrides the function in order to provide functionality of [raster_pdf()],
+#' but internally calls [grDevices::dev.off()].
 #'
-#' @param which which
+#' @param which An integer that specifies the device number. Default is the
+#'        current device.
+#'
+#' @seealso [grDevices::dev.off()]
+#'
+#' @examples
+#' raster_pdf(tempfile(fileext = ".pdf"))
+#' plot(iris)
+#' dev.off()
 #'
 #' @export
 dev.off <- function(which = grDevices::dev.cur()) {

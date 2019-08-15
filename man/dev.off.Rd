@@ -2,13 +2,25 @@
 % Please edit documentation in R/dev.off.R
 \name{dev.off}
 \alias{dev.off}
-\title{dev.off}
+\title{Shut down a graphics device}
 \usage{
 dev.off(which = grDevices::dev.cur())
 }
 \arguments{
-\item{which}{which}
+\item{which}{An integer that specifies the device number. Default is the
+current device.}
 }
 \description{
-lorem ipsum
+Please see the manual page for \code{\link[grDevices:dev.off]{grDevices::dev.off()}}. Package \code{rasterpdf}
+overrides the function in order to provide functionality of \code{\link[=raster_pdf]{raster_pdf()}},
+but internally calls \code{\link[grDevices:dev.off]{grDevices::dev.off()}}.
+}
+\examples{
+raster_pdf(tempfile(fileext = ".pdf"))
+plot(iris)
+dev.off()
+
+}
+\seealso{
+\code{\link[grDevices:dev.off]{grDevices::dev.off()}}
 }
