@@ -28,7 +28,7 @@ dev.off <- function(which = grDevices::dev.cur()) {
     width = device$width,
     height = device$height
   )
-  old_par <- graphics::par(mai = c(0, 0, 0, 0))
+  graphics::par(mai = c(0, 0, 0, 0))
 
   png_file_regexp <-
     sub(pattern = "%05i", replacement = "[0-9]{5,}", x = device$pngs)
@@ -56,8 +56,6 @@ dev.off <- function(which = grDevices::dev.cur()) {
       )
     }
   )
-
-  graphics::par(old_par)
 
   lapply(png_files, unlink)
 
