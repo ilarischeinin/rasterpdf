@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-`rasterpdf` is an R package to plot raster graphics inside PDF files. This is
+`rasterpdf` is an R package to plot raster graphics in PDF files. This can be
 useful when one needs multipage documents, but the plots contain so many
 individual elements that use of vector graphics (as `grDevices::pdf()` does)
 results in inconveniently large file sizes. Internally, `rasterpdf` plots each

@@ -3,7 +3,7 @@
 #' Open a graphics device for raster PDF files. Internally, a PNG device is
 #' used for the individual pages, which are then combined into one PDF file.
 #'
-#' The ability to plot raster graphics inside PDF files is useful when one needs
+#' The ability to plot raster graphics in PDF files can be useful when one needs
 #' multipage documents, but the plots contain so many individual elements that
 #' use of vector graphics (as grDevices::pdf() does) results in inconveniently
 #' large file sizes. Internally, rasterpdf plots each individual page as a PNG,
