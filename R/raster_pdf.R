@@ -65,10 +65,14 @@ agg_pdf <- function(...) {
   if (requireNamespace("ragg", quietly = TRUE)) {
     raster_pdf(..., png_function = ragg::agg_png)
   } else {
+    # This branch is not reached by unit tests, so we'll ignore it from code
+    # coverage calculations.
+    # nocov start
     warning(
       "Package \"ragg\" not availabe; falling back to grDevices::png().",
       call. = FALSE
     )
     raster_pdf(...)
+    # nocov end
   }
 }
