@@ -16,23 +16,32 @@
 #'
 #' @export
 dev.off <- function(which = grDevices::dev.cur()) {
+  # Check whether the graphics device in question is a raster PDF device.
+  # As raster_pdf_device() is implemented with a closure, it is able to store
+  # that state.
   device <- raster_pdf_device(which = which)
+  # If it is not, no need to do anything but to call grDevices::dev.off()
   if (is.null(device)) {
     return(grDevices::dev.off(which = which))
   }
+  # If it is, reset the device as we will close it.
   raster_pdf_device(device = NULL)
 
+  # Close the intermediate PNG graphics device.
   grDevices::dev.off(which = which)
+  # Open a PDF graphics device. Here we need the filename, width, and height
+  # that were stored earlier by raster_pdf_device().
   grDevices::pdf(
     file = device$filename,
     width = device$width,
     height = device$height
   )
+  # Since the individual PNGs already have margins, let's not add extra ones.
   graphics::par(mai = c(0, 0, 0, 0))
 
+  # List the individual PNG files that have been produced.
   png_file_regexp <-
     sub(pattern = "%05i", replacement = "[0-9]{5,}", x = device$pngs)
-
   png_files <-
     list.files(
       path = dirname(png_file_regexp),
@@ -40,6 +49,7 @@ dev.off <- function(which = grDevices::dev.cur()) {
       full.names = TRUE
     )
 
+  # Read all the intermediate PNG files and write them to the PDF.
   lapply(
     png_files,
     function(png_file) {
@@ -57,7 +67,9 @@ dev.off <- function(which = grDevices::dev.cur()) {
     }
   )
 
+  # Remove the intermediate PNG files.
   lapply(png_files, unlink)
 
+  # Close the PDF graphics device.
   grDevices::dev.off(which = grDevices::dev.cur())
 }

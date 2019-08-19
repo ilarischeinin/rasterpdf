@@ -3,6 +3,12 @@
 #' Open a graphics device for raster PDF files. Internally, a PNG device is
 #' used for the individual pages, which are then combined into one PDF file.
 #'
+#' The ability to plot raster graphics inside PDF files is useful when one needs
+#' multipage documents, but the plots contain so many individual elements that
+#' use of vector graphics (as grDevices::pdf() does) results in inconveniently
+#' large file sizes. Internally, rasterpdf plots each individual page as a PNG,
+#' and then combines them in one PDF file.
+#'
 #' `agg_pdf(...)` is shorthand for
 #' `raster_pdf(..., png_function = ragg::agg_png)`.
 #'
@@ -32,20 +38,16 @@ raster_pdf <- function(filename = "Rplots.pdf",
                        png_function = grDevices::png,
                        ...) {
 
+  # As the PDF device grDevices::pdf() only takes width and height in inches,
+  # convert from other units as needed so that we can provide more flexibility.
   units <- match.arg(units)
   width <- convert_to_inches(width, units = units, res = res)
   height <- convert_to_inches(height, units = units, res = res)
 
+  # Define a name pattern for the intermediate PNG files.
   pngs <- tempfile(pattern = "raster_pdf-", fileext = "-%05i.png")
 
-  device <-
-    list(
-      filename = filename,
-      pngs = pngs,
-      width = width,
-      height = height
-    )
-
+  # Open a PNG graphics device to plot the individual pages.
   png_function <- match.fun(png_function)
   png_function(
     filename = pngs,
@@ -56,6 +58,16 @@ raster_pdf <- function(filename = "Rplots.pdf",
     ...
   )
 
+  # Collect the pieces of information that need to be stored for a future call
+  # to grDevices::pdf(), once the user calls dev.off(). As raster_pdf_device()
+  # is implemented with a closure, it is able to store them.
+  device <-
+    list(
+      filename = filename,
+      pngs = pngs,
+      width = width,
+      height = height
+    )
   raster_pdf_device(device = device)
 }
 

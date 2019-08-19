@@ -1,3 +1,11 @@
+#' Convert to inches
+#'
+#' Converts from other units (cm, mm, or px) to inches.
+#'
+#' @param x The value to convert.
+#' @inheritParams raster_pdf
+#'
+#' @noRd
 convert_to_inches <- function(x, units, res) {
   if (units == "in") {
     x
@@ -12,6 +20,20 @@ convert_to_inches <- function(x, units, res) {
   }
 }
 
+#' Get or set an active raster pdf graphics device
+#'
+#' This function is defined with a closure so that it remembers its state
+#' across function calls. When a raster pdf graphics device is opened with
+#' [raster_pdf()], this function is called with the `device` parameter, which
+#' contains the pieces of information that need to be stored: the filename,
+#' width, and height of the resulting PDF, and the file name pattern of the
+#' intermediate PNG files.
+#' 
+#' @param device A named list with components `filename`, `width`, `height`,
+#'        and `pngs`.
+#' @inheritParams dev.off
+#'
+#' @noRd
 raster_pdf_device_closure <- function() {
   # covr doesn't seem to detect the next two lines should in reality be covered
   # by the unit tests. Maybe it's confused by the use of a closure?

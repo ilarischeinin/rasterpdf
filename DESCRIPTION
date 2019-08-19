@@ -7,7 +7,11 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ilari.scheinin+rasterpdf@gmail.com",
            comment = c(ORCID = "0000-0002-4696-9066"))
-Description: Plot raster graphics inside PDF files.
+Description: The ability to plot raster graphics inside PDF files is useful
+    when one needs multipage documents, but the plots contain so many
+    individual elements that (the usual) use of vector graphics results in
+    inconveniently large file sizes. Internally, rasterpdf plots each
+    individual page as a PNG, and then combines them in one PDF file.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

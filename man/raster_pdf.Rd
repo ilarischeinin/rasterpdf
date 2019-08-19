@@ -33,6 +33,12 @@ Open a graphics device for raster PDF files. Internally, a PNG device is
 used for the individual pages, which are then combined into one PDF file.
 }
 \details{
+The ability to plot raster graphics inside PDF files is useful when one needs
+multipage documents, but the plots contain so many individual elements that
+use of vector graphics (as grDevices::pdf() does) results in inconveniently
+large file sizes. Internally, rasterpdf plots each individual page as a PNG,
+and then combines them in one PDF file.
+
 \code{agg_pdf(...)} is shorthand for
 \code{raster_pdf(..., png_function = ragg::agg_png)}.
 }
