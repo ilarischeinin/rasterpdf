@@ -19,9 +19,9 @@ agg_pdf(...)
 \item{height}{Page height.}
 
 \item{units}{The units in which \code{height} and \code{weight} are given. Can be
-\code{in} (inches, the default), \code{cm}, \code{mm}, or \code{px} (pixels).}
+\code{"in"} (inches, the default), \code{"cm"}, \code{"mm"}, or \code{"px"} (pixels).}
 
-\item{res}{The resolution in ppi.}
+\item{res}{Resolution in ppi.}
 
 \item{png_function}{A PNG device function. Default is \code{\link[grDevices:png]{grDevices::png()}}.}
 
@@ -35,9 +35,10 @@ used for the individual pages, which are then combined into one PDF file.
 \details{
 The ability to plot raster graphics in PDF files can be useful when one needs
 multipage documents, but the plots contain so many individual elements that
-use of vector graphics (as grDevices::pdf() does) results in inconveniently
-large file sizes. Internally, rasterpdf plots each individual page as a PNG,
-and then combines them in one PDF file.
+use of vector graphics (with \code{\link[grDevices:pdf]{grDevices::pdf()}}) results in inconveniently
+large file sizes. Internally, the function plots each individual page in a
+PNG file, which are then combined into one PDF file when \code{\link[=dev.off]{dev.off()}} is
+called.
 
 \code{agg_pdf(...)} is shorthand for
 \code{raster_pdf(..., png_function = ragg::agg_png)}.

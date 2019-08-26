@@ -5,9 +5,10 @@
 #'
 #' The ability to plot raster graphics in PDF files can be useful when one needs
 #' multipage documents, but the plots contain so many individual elements that
-#' use of vector graphics (as grDevices::pdf() does) results in inconveniently
-#' large file sizes. Internally, rasterpdf plots each individual page as a PNG,
-#' and then combines them in one PDF file.
+#' use of vector graphics (with [grDevices::pdf()]) results in inconveniently
+#' large file sizes. Internally, the function plots each individual page in a
+#' PNG file, which are then combined into one PDF file when [dev.off()] is
+#' called.
 #'
 #' `agg_pdf(...)` is shorthand for
 #' `raster_pdf(..., png_function = ragg::agg_png)`.
@@ -16,8 +17,8 @@
 #' @param width Page width.
 #' @param height Page height.
 #' @param units The units in which `height` and `weight` are given. Can be
-#'         `in` (inches, the default), `cm`, `mm`, or `px` (pixels).
-#' @param res The resolution in ppi.
+#'         `"in"` (inches, the default), `"cm"`, `"mm"`, or `"px"` (pixels).
+#' @param res Resolution in ppi.
 #' @param png_function A PNG device function. Default is [grDevices::png()].
 #' @param ... Further arguments passed through to the PNG device function
 #' specified in `png_function`.

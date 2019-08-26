@@ -2,7 +2,7 @@
 #'
 #' rasterpdf is an R package to plot raster graphics in PDF files. This can be
 #' useful when one needs multipage documents, but the plots contain so many
-#' individual elements that use of vector graphics (as grDevices::pdf() does)
+#' individual elements that use of vector graphics (with [grDevices::pdf()])
 #' results in inconveniently large file sizes. Internally, rasterpdf plots each
 #' individual page as a PNG, and then combines them in one PDF file.
 #' 
