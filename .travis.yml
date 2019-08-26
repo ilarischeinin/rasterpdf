@@ -12,7 +12,8 @@ jobs:
         - Rscript -e 'covr::codecov()'
       deploy:
         if: branch = master
+        provider: script
+        script: Rscript -e 'pkgdown::deploy_site_github()'
         skip_cleanup: true
-        - Rscript -e 'pkgdown::deploy_site_github()'
     - r: oldrel
     - r: devel
