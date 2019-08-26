@@ -13,14 +13,20 @@ Description: The ability to plot raster graphics in PDF files can be useful
     inconveniently large file sizes. Internally, rasterpdf plots each
     individual page as a PNG, and then combines them in one PDF file.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.1.1
-Roxygen: list(markdown = TRUE)
 Imports: 
     png
 Suggests: 
     covr,
     lintr,
+    pkgdown,
     ragg,
     testthat
+URL:
+    https://ilarischeinin.github.io/rasterpdf,
+    https://github.com/ilarischeinin/rasterpdf
+BugReports:
+    https://github.com/ilarischeinin/rasterpdf/issues
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
