@@ -11,7 +11,8 @@ jobs:
         - Rscript -e 'lintr::lint_package()'
         - Rscript -e 'covr::codecov()'
       deploy:
-        if: branch = master
+        on:
+          branch: master
         provider: script
         script: Rscript -e 'pkgdown::deploy_site_github()'
         skip_cleanup: true
