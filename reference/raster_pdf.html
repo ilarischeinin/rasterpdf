@@ -136,11 +136,11 @@ used for the individual pages, which are then combined into one PDF file.</p>
     <tr>
       <th>units</th>
       <td><p>The units in which <code>height</code> and <code>weight</code> are given. Can be
-<code>in</code> (inches, the default), <code>cm</code>, <code>mm</code>, or <code>px</code> (pixels).</p></td>
+<code>"in"</code> (inches, the default), <code>"cm"</code>, <code>"mm"</code>, or <code>"px"</code> (pixels).</p></td>
     </tr>
     <tr>
       <th>res</th>
-      <td><p>The resolution in ppi.</p></td>
+      <td><p>Resolution in ppi.</p></td>
     </tr>
     <tr>
       <th>png_function</th>
@@ -157,9 +157,10 @@ specified in <code>png_function</code>.</p></td>
 
     <p>The ability to plot raster graphics in PDF files can be useful when one needs
 multipage documents, but the plots contain so many individual elements that
-use of vector graphics (as grDevices::pdf() does) results in inconveniently
-large file sizes. Internally, rasterpdf plots each individual page as a PNG,
-and then combines them in one PDF file.</p>
+use of vector graphics (with <code><a href='https://www.rdocumentation.org/packages/grDevices/topics/pdf'>grDevices::pdf()</a></code>) results in inconveniently
+large file sizes. Internally, the function plots each individual page in a
+PNG file, which are then combined into one PDF file when <code><a href='dev.off.html'>dev.off()</a></code> is
+called.</p>
 <p><code>agg_pdf(...)</code> is shorthand for
 <code>raster_pdf(..., png_function = ragg::agg_png)</code>.</p>
     
