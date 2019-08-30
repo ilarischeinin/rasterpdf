@@ -17,13 +17,17 @@
 #' @param width Page width.
 #' @param height Page height.
 #' @param units The units in which `height` and `weight` are given. Can be
-#'         `"in"` (inches, the default), `"cm"`, `"mm"`, or `"px"` (pixels).
+#'        `"in"` (inches, the default), `"cm"`, `"mm"`, or `"px"` (pixels).
 #' @param res Resolution in ppi.
-#' @param png_function A PNG device function. Default is [grDevices::png()].
+#' @param png_function A PNG device function. If `NULL`, use [grDevices::png()].
+#' @param pdf_function A PDF device function. If `NULL`, use
+#'        [grDevices::cairo_pdf()] if it is available, and otherwise
+#'        [grDevices::png()].
 #' @param ... Further arguments passed through to the PNG device function
-#' specified in `png_function`.
+#'        specified in `png_function`.
 #'
-#' @seealso [grDevices::pdf()], [grDevices::png()], [ragg::agg_png()]
+#' @seealso [grDevices::pdf()], [grDevices::cairo_pdf()],
+#'          [grDevices::png()], [ragg::agg_png()]
 #'
 #' @examples
 #' raster_pdf(tempfile(fileext = ".pdf"))
@@ -36,7 +40,8 @@ raster_pdf <- function(filename = "Rplots.pdf",
                        height = 7,
                        units = c("in", "cm", "mm", "px"),
                        res = 72L,
-                       png_function = grDevices::png,
+                       png_function = NULL,
+                       pdf_function = NULL,
                        ...) {
 
   # As the PDF device grDevices::pdf() only takes width and height in inches,
@@ -49,6 +54,9 @@ raster_pdf <- function(filename = "Rplots.pdf",
   pngs <- tempfile(pattern = "raster_pdf-", fileext = "-%05i.png")
 
   # Open a PNG graphics device to plot the individual pages.
+  if (is.null(png_function)) {
+    png_function <- grDevices::png
+  }
   png_function <- match.fun(png_function)
   png_function(
     filename = pngs,
@@ -59,6 +67,16 @@ raster_pdf <- function(filename = "Rplots.pdf",
     ...
   )
 
+  # Determine which PDF device function to use.
+  if (is.null(pdf_function)) {
+    if (capabilities("cairo")) {
+      pdf_function <- grDevices::cairo_pdf
+    } else {
+      pdf_function <- grDevices::pdf
+    }
+  }
+  pdf_function <- match.fun(pdf_function)
+
   # Collect the pieces of information that need to be stored for a future call
   # to grDevices::pdf(), once the user calls dev.off(). As raster_pdf_device()
   # is implemented with a closure, it is able to store them.
@@ -67,7 +85,8 @@ raster_pdf <- function(filename = "Rplots.pdf",
       filename = filename,
       pngs = pngs,
       width = width,
-      height = height
+      height = height,
+      pdf_function = pdf_function
     )
   raster_pdf_device(device = device)
 }

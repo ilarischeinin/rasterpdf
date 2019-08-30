@@ -6,8 +6,8 @@
 \title{Raster PDF graphics device (with PNG pages)}
 \usage{
 raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
-  units = c("in", "cm", "mm", "px"), res = 72L,
-  png_function = grDevices::png, ...)
+  units = c("in", "cm", "mm", "px"), res = 72L, png_function = NULL,
+  pdf_function = NULL, ...)
 
 agg_pdf(...)
 }
@@ -23,7 +23,11 @@ agg_pdf(...)
 
 \item{res}{Resolution in ppi.}
 
-\item{png_function}{A PNG device function. Default is \code{\link[grDevices:png]{grDevices::png()}}.}
+\item{png_function}{A PNG device function. If \code{NULL}, use \code{\link[grDevices:png]{grDevices::png()}}.}
+
+\item{pdf_function}{A PDF device function. If \code{NULL}, use
+\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and otherwise
+\code{\link[grDevices:png]{grDevices::png()}}.}
 
 \item{...}{Further arguments passed through to the PNG device function
 specified in \code{png_function}.}
@@ -50,5 +54,6 @@ dev.off()
 
 }
 \seealso{
-\code{\link[grDevices:pdf]{grDevices::pdf()}}, \code{\link[grDevices:png]{grDevices::png()}}, \code{\link[ragg:agg_png]{ragg::agg_png()}}
+\code{\link[grDevices:pdf]{grDevices::pdf()}}, \code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}},
+\code{\link[grDevices:png]{grDevices::png()}}, \code{\link[ragg:agg_png]{ragg::agg_png()}}
 }
