@@ -6,9 +6,15 @@
 #' The ability to plot raster graphics in PDF files can be useful when one needs
 #' multipage documents, but the plots contain so many individual elements that
 #' use of vector graphics (with [grDevices::pdf()]) results in inconveniently
-#' large file sizes. Internally, the function plots each individual page in a
-#' PNG file, which are then combined into one PDF file when [dev.off()] is
-#' called.
+#' large file sizes
+#'
+#' Internally, the function plots each individual page in a PNG file, which are
+#' then combined into one PDF file when [dev.off()] is called. By default, the
+#' PNGs are generated with [grDevices::png()], but another device function can
+#' also be specified. The PDF is by default generated with
+#' [grDevices::cairo_pdf()] if it is available, and
+#' [grDevices::pdf()] otherwise. Again, it is possible to specify another PDF
+#' device function.
 #'
 #' `agg_pdf(...)` is shorthand for
 #' `raster_pdf(..., png_function = ragg::agg_png)`.

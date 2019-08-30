@@ -40,9 +40,15 @@ used for the individual pages, which are then combined into one PDF file.
 The ability to plot raster graphics in PDF files can be useful when one needs
 multipage documents, but the plots contain so many individual elements that
 use of vector graphics (with \code{\link[grDevices:pdf]{grDevices::pdf()}}) results in inconveniently
-large file sizes. Internally, the function plots each individual page in a
-PNG file, which are then combined into one PDF file when \code{\link[=dev.off]{dev.off()}} is
-called.
+large file sizes
+
+Internally, the function plots each individual page in a PNG file, which are
+then combined into one PDF file when \code{\link[=dev.off]{dev.off()}} is called. By default, the
+PNGs are generated with \code{\link[grDevices:png]{grDevices::png()}}, but another device function can
+also be specified. The PDF is by default generated with
+\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and
+\code{\link[grDevices:pdf]{grDevices::pdf()}} otherwise. Again, it is possible to specify another PDF
+device function.
 
 \code{agg_pdf(...)} is shorthand for
 \code{raster_pdf(..., png_function = ragg::agg_png)}.
