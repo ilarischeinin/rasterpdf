@@ -35,13 +35,9 @@ convert_to_inches <- function(x, units, res) {
 #'
 #' @noRd
 raster_pdf_device_closure <- function() {
-  # covr doesn't seem to detect the next two lines should in reality be covered
-  # by the unit tests. Maybe it's confused by the use of a closure?
-  # nocov start
   raster_pdf_devices <- list()
 
   function(which = NULL, device = NULL) {
-    # nocov end
     if (!is.null(which)) {
       stopifnot(is.numeric(which))
       which <- as.integer(which)
