@@ -30,7 +30,9 @@ in R:
 ```r
 library(rasterpdf)
 
-raster_pdf("EuStockMarkets.pdf")
+raster_pdf("Rplots.pdf")
+plot(iris)
+image(volcano)
 plot(EuStockMarkets)
 dev.off()
 ```
@@ -43,6 +45,8 @@ library(rasterpdf)
 
 raster_pdf("diamonds.pdf")
 ggplot(diamonds, aes(carat, price)) + geom_point()
+ggplot(diamonds, aes(carat, price, colour = color)) + geom_point()
+ggplot(diamonds, aes(carat, price, colour = clarity)) + geom_point()
 dev.off()
 ```
 
@@ -50,4 +54,6 @@ The output size and resolution can be set with parameters `width`, `height`,
 `units`, and `res`. The default is 7 x 7 inches and 72 ppi. Any other
 parameters (`...`) are passed through to the PNG device function. By default
 this is `grDevices::png()`, but another function can also be specified, such
-`ragg::agg_png()`.
+`ragg::agg_png()`. The PDF file is by default generated with
+`grDevices::cairo_pdf()` if cairo is available, and `grDevices::pdf()`
+otherwise. Here again it is also possible to specify another function.
