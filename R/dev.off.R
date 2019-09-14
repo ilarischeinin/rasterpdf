@@ -31,12 +31,32 @@ dev.off <- function(which = grDevices::dev.cur()) {
   grDevices::dev.off(which = which)
   # Open a PDF graphics device. Here we need the filename, width, height, and
   # the PDF device function that were stored earlier by raster_pdf_device().
-  device$pdf_function(
-    file = device$filename,
-    width = device$width,
-    height = device$height,
-    onefile = TRUE
-  )
+  # Also determine which PDF device function to use.
+  if (is.null(device$pdf_function)) {
+    if (capabilities("cairo")) {
+      grDevices::cairo_pdf(
+        filename = device$filename,
+        width = device$width,
+        height = device$height,
+        onefile = TRUE
+      )
+    } else {
+      grDevices::pdf(
+        file = device$filename,
+        width = device$width,
+        height = device$height,
+        onefile = TRUE
+      )
+    }
+  } else {
+    pdf_function <- match.fun(device$pdf_function)
+    pdf_function(
+      file = device$filename,
+      width = device$width,
+      height = device$height,
+      onefile = TRUE
+    )
+  }
   # Since the individual PNGs already have margins, let's not add extra ones.
   graphics::par(mai = c(0, 0, 0, 0))
 

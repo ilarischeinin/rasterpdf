@@ -73,16 +73,6 @@ raster_pdf <- function(filename = "Rplots.pdf",
     ...
   )
 
-  # Determine which PDF device function to use.
-  if (is.null(pdf_function)) {
-    if (capabilities("cairo")) {
-      pdf_function <- grDevices::cairo_pdf
-    } else {
-      pdf_function <- grDevices::pdf
-    }
-  }
-  pdf_function <- match.fun(pdf_function)
-
   # Collect the pieces of information that need to be stored for a future call
   # to grDevices::pdf(), once the user calls dev.off(). As raster_pdf_device()
   # is implemented with a closure, it is able to store them.
