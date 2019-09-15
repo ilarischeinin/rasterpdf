@@ -20,15 +20,20 @@
 #' `raster_pdf(..., png_function = ragg::agg_png)`.
 #'
 #' @param filename A character string of the output file name.
-#' @param width Page width.
-#' @param height Page height.
+#' @param width Page width. If `NULL`, use value of
+#'        `getOption("rasterpdf.width")` if set, and default to `7` otherwise.
+#' @param height Page height. If `NULL`, use value of
+#'        `getOption("rasterpdf.height")` if set, and default to `7` otherwise.
 #' @param units The units in which `height` and `weight` are given. Can be
-#'        `"in"` (inches, the default), `"cm"`, `"mm"`, or `"px"` (pixels).
-#' @param res Resolution in ppi.
+#'        `"in"` (inches), `"cm"`, `"mm"`, or `"px"` (pixels). If `NULL`, use
+#'        value of `getOption("rasterpdf.units")` if set, and default to "in"
+#'      ` otherwise.
+#' @param res Resolution in ppi. If `NULL`, use value of
+#'        `getOption("rasterpdf.res")` if set, and default to `72L` otherwise.
 #' @param png_function A PNG device function. If `NULL`, use [grDevices::png()].
 #' @param pdf_function A PDF device function. If `NULL`, use
-#'        [grDevices::cairo_pdf()] if it is available, and otherwise
-#'        [grDevices::png()].
+#'        [grDevices::cairo_pdf()] if it is available, and [grDevices::png()]
+#'        otherwise.
 #' @param ... Further arguments passed through to the PNG device function
 #'        specified in `png_function`.
 #'
@@ -42,17 +47,23 @@
 #'
 #' @export
 raster_pdf <- function(filename = "Rplots.pdf",
-                       width = 7,
-                       height = 7,
-                       units = c("in", "cm", "mm", "px"),
-                       res = 72L,
+                       width = NULL,
+                       height = NULL,
+                       units = NULL,
+                       res = NULL,
                        png_function = NULL,
                        pdf_function = NULL,
                        ...) {
 
+  # Default values for the parameters.
+  width <- get_value_or_default("width", width)
+  height <- get_value_or_default("height", height)
+  units <- get_value_or_default("units", units)
+  res <- get_value_or_default("res", 72L)
+
   # As the PDF device grDevices::pdf() only takes width and height in inches,
   # convert from other units as needed so that we can provide more flexibility.
-  units <- match.arg(units)
+  units <- match.arg(units, choices = c("in", "cm", "mm", "px"))
   width <- convert_to_inches(width, units = units, res = res)
   height <- convert_to_inches(height, units = units, res = res)
 

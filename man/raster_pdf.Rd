@@ -5,8 +5,8 @@
 \alias{agg_pdf}
 \title{Raster PDF graphics device (with PNG pages)}
 \usage{
-raster_pdf(filename = "Rplots.pdf", width = 7, height = 7,
-  units = c("in", "cm", "mm", "px"), res = 72L, png_function = NULL,
+raster_pdf(filename = "Rplots.pdf", width = NULL, height = NULL,
+  units = NULL, res = NULL, png_function = NULL,
   pdf_function = NULL, ...)
 
 agg_pdf(...)
@@ -14,20 +14,25 @@ agg_pdf(...)
 \arguments{
 \item{filename}{A character string of the output file name.}
 
-\item{width}{Page width.}
+\item{width}{Page width. If \code{NULL}, use value of
+\code{getOption("rasterpdf.width")} if set, and default to \code{7} otherwise.}
 
-\item{height}{Page height.}
+\item{height}{Page height. If \code{NULL}, use value of
+\code{getOption("rasterpdf.height")} if set, and default to \code{7} otherwise.}
 
 \item{units}{The units in which \code{height} and \code{weight} are given. Can be
-\code{"in"} (inches, the default), \code{"cm"}, \code{"mm"}, or \code{"px"} (pixels).}
+\code{"in"} (inches), \code{"cm"}, \code{"mm"}, or \code{"px"} (pixels). If \code{NULL}, use
+value of \code{getOption("rasterpdf.units")} if set, and default to "in"
+` otherwise.}
 
-\item{res}{Resolution in ppi.}
+\item{res}{Resolution in ppi. If \code{NULL}, use value of
+\code{getOption("rasterpdf.res")} if set, and default to \code{72L} otherwise.}
 
 \item{png_function}{A PNG device function. If \code{NULL}, use \code{\link[grDevices:png]{grDevices::png()}}.}
 
 \item{pdf_function}{A PDF device function. If \code{NULL}, use
-\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and otherwise
-\code{\link[grDevices:png]{grDevices::png()}}.}
+\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and \code{\link[grDevices:png]{grDevices::png()}}
+otherwise.}
 
 \item{...}{Further arguments passed through to the PNG device function
 specified in \code{png_function}.}

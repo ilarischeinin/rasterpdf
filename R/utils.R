@@ -20,6 +20,67 @@ convert_to_inches <- function(x, units, res) {
   }
 }
 
+#' Get the PDF device function
+#'
+#' Determine which PDF device function to use. If a function is provided with
+#' parameter `pdf_function`, use that. If not (i.e. it is `NULL`), default to
+#' [grDevices::cairo_pdf()] if available, and [grDevices::pdf()] otherwise.
+#'
+#' @param pdf_function A PDF device function.
+#' @param cairo A boolean whether to default to [grDevices::cairo_pdf()] (as
+#'        opposed to [grDevices::pdf()]) if `pdf_function` is `NULL`. This
+#'        parameter exists mainly to make it easier to unit test the logic.
+#'
+#' @noRd
+get_pdf_function <- function(pdf_function = NULL,
+                             cairo = capabilities("cairo")) {
+
+  if (!is.null(pdf_function)) {
+    match.fun(pdf_function)
+  } else if (cairo) {
+    grDevices::cairo_pdf
+  } else {
+    grDevices::pdf
+  }
+}
+
+#' Get a specified or default value for a parameter
+#'
+#' A utility function to retrieve parameter value in this order: 1) a value
+#' specified by the user, 2) a user-specified default value set via setting
+#' `options()`, or 3) a global default value defined in code.
+#'
+#' @param parameter Parameter name.
+#' @param value Parameter value, or `NULL` to get the default.
+#'
+#' @noRd
+get_value_or_default <- function(parameter, value = NULL) {
+  if (!is.null(value)) {
+    return(value)
+  }
+  defaults <-
+    list(
+      width = 7,
+      height = 7,
+      units = "in",
+      res = 72L
+    )
+  parameter <- match.arg(parameter, choices = names(defaults))
+  getOption(paste0("rasterpdf.", parameter), default = defaults[[parameter]])
+}
+
+#' Determine if a function has a filename paramete
+#'
+#' While other device functions (including grDevices::cairo_pdf()) generally
+#' have a "filename" parameter, grDevices::pdf() has "file". So, this utility
+#' function detects if a function has a parameter called "filename".
+#' @param pdf_function A (device) function.
+#'
+#' @noRd
+has_filename_parameter <- function(pdf_function) {
+  "filename" %in% methods::formalArgs(pdf_function)
+}
+
 #' Get or set an active raster pdf graphics device
 #'
 #' This function is defined with a closure so that it remembers its state
