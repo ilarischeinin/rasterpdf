@@ -1,5 +1,5 @@
 Package: rasterpdf
-Title: Plot Raster Graphics in PDFs
+Title: Plot Raster Graphics in PDF Files
 Version: 0.1.0
 Authors@R: 
     person(given = "Ilari",
@@ -8,9 +8,9 @@ Authors@R:
            email = "ilari.scheinin+rasterpdf@gmail.com",
            comment = c(ORCID = "0000-0002-4696-9066"))
 Description: The ability to plot raster graphics in PDF files can be useful
-    when one needs multipage documents, but the plots contain so many
+    when one needs multi-page documents, but the plots contain so many
     individual elements that (the usual) use of vector graphics results in
-    inconveniently large file sizes. Internally, rasterpdf plots each
+    inconveniently large file sizes. Internally, the package plots each
     individual page as a PNG, and then combines them in one PDF file.
 License: MIT + file LICENSE
 Imports:
