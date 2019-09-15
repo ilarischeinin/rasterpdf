@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shut down a graphics device — dev.off • rasterpdf</title>
+<title>Changelog • rasterpdf</title>
 
 
 <!-- jquery -->
@@ -35,11 +35,7 @@
 
 
 
-<meta property="og:title" content="Shut down a graphics device — dev.off" />
-<meta property="og:description" content="Please see the manual page for grDevices::dev.off(). Package rasterpdf
-overrides the function in order to provide functionality of raster_pdf(),
-but internally calls grDevices::dev.off()." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -58,7 +54,7 @@ but internally calls grDevices::dev.off()." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -110,49 +106,28 @@ but internally calls grDevices::dev.off()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shut down a graphics device</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ilarischeinin/rasterpdf/blob/master/R/dev.off.R'><code>R/dev.off.R</code></a></small>
-    <div class="hidden name"><code>dev.off.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/ilarischeinin/rasterpdf/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Please see the manual page for <code><a href='https://rdrr.io/r/grDevices/dev.html'>grDevices::dev.off()</a></code>. Package <code>rasterpdf</code>
-overrides the function in order to provide functionality of <code><a href='raster_pdf.html'>raster_pdf()</a></code>,
-but internally calls <code><a href='https://rdrr.io/r/grDevices/dev.html'>grDevices::dev.off()</a></code>.</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>dev.off</span>(<span class='kw'>which</span> <span class='kw'>=</span> <span class='kw pkg'>grDevices</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/dev.html'>dev.cur</a></span>())</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>which</th>
-      <td><p>An integer that specifies the device number. Default is the
-current device.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/grDevices/dev.html'>grDevices::dev.off()</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='raster_pdf.html'>raster_pdf</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".pdf"</span>))
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>iris</span>)
-<span class='fu'>dev.off</span>()</div><div class='output co'>#&gt; pdf 
-#&gt;   2 </div><div class='input'>
-</div></pre>
+    <div id="rasterpdf-0-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#rasterpdf-0-1-0" class="anchor"></a>rasterpdf 0.1.0</h1>
+<ul>
+<li>Initial CRAN release.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#rasterpdf-0-1-0">0.1.0</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
 
