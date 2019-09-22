@@ -49,7 +49,12 @@ dev.off <- function(which = grDevices::dev.cur()) {
       onefile = TRUE
     )
   }
+  # At the end of the function call, close the PDF graphics device. This
+  # ensures it gets closed even if there is an error later in this function.
+  on.exit(grDevices::dev.off(which = grDevices::dev.cur()), add = TRUE)
   # Since the individual PNGs already have margins, let's not add extra ones.
+  # Normally there should be an on.exit() call to undo the change to par(),
+  # but since we already have an on.exit(dev.off()) above, there is no need.
   graphics::par(mai = c(0, 0, 0, 0))
 
   # List the individual PNG files that have been produced.
@@ -82,7 +87,4 @@ dev.off <- function(which = grDevices::dev.cur()) {
 
   # Remove the intermediate PNG files.
   lapply(png_files, unlink)
-
-  # Close the PDF graphics device.
-  grDevices::dev.off(which = grDevices::dev.cur())
 }
