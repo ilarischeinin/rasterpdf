@@ -105,7 +105,7 @@ agg_pdf <- function(...) {
     raster_pdf(..., png_function = ragg::agg_png)
   } else {
     warning(
-      "Package \"ragg\" not availabe; falling back to grDevices::png().",
+      "Package \"ragg\" not available; falling back to grDevices::png().",
       call. = FALSE
     )
     raster_pdf(...)
