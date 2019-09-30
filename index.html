@@ -77,34 +77,36 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rasterpdf" class="anchor"></a>rasterpdf</h1></div>
 <!-- badges: start -->
-<p><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <img src="https://www.r-pkg.org/badges/version/rasterpdf" alt="CRAN status"><a href="https://travis-ci.org/ilarischeinin/rasterpdf"><img src="https://travis-ci.org/ilarischeinin/rasterpdf.svg?branch=master" alt="Travis build status"></a> <a href="https://codecov.io/gh/ilarischeinin/rasterpdf?branch=master"><img src="https://codecov.io/gh/ilarischeinin/rasterpdf/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License: MIT"></a> <!-- badges: end --></p>
+<p><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <img src="https://www.r-pkg.org/badges/version-last-release/rasterpdf" alt="CRAN status"><a href="https://travis-ci.org/ilarischeinin/rasterpdf"><img src="https://travis-ci.org/ilarischeinin/rasterpdf.svg?branch=master" alt="Travis build status"></a> <a href="https://codecov.io/gh/ilarischeinin/rasterpdf?branch=master"><img src="https://codecov.io/gh/ilarischeinin/rasterpdf/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License: MIT"></a> <!-- badges: end --></p>
 <p><code>rasterpdf</code> is an R package to plot raster graphics in PDF files. This can be useful when one needs multipage documents, but the plots contain so many individual elements that use of vector graphics (with <code><a href="https://rdrr.io/r/grDevices/pdf.html">grDevices::pdf()</a></code>) results in inconveniently large file sizes. Internally, <code>rasterpdf</code> plots each individual page as a PNG, and then combines them in one PDF file.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p><code>rasterpdf</code> is not on CRAN, but can be installed from GitHub with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ilarischeinin/rasterpdf"</span>)</a></code></pre></div>
+<p><code>rasterpdf</code> can be installed from <a href="https://cran.r-project.org/web/packages/rasterpdf/index.html">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"rasterpdf"</span>)</a></code></pre></div>
+<p>Or the development version from GitHub with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ilarischeinin/rasterpdf"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p><code>rasterpdf</code>’s main function <code><a href="reference/raster_pdf.html">raster_pdf()</a></code> can be used as any graphics device in R:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rasterpdf)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="reference/raster_pdf.html">raster_pdf</a></span>(<span class="st">"Rplots.pdf"</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(iris)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/graphics/image.html">image</a></span>(volcano)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(EuStockMarkets)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="reference/dev.off.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rasterpdf)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/raster_pdf.html">raster_pdf</a></span>(<span class="st">"Rplots.pdf"</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(iris)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/graphics/image.html">image</a></span>(volcano)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(EuStockMarkets)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="reference/dev.off.html">dev.off</a></span>()</a></code></pre></div>
 <p>Or similarly with <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rasterpdf)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/raster_pdf.html">raster_pdf</a></span>(<span class="st">"diamonds.pdf"</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price, <span class="dt">colour =</span> color)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price, <span class="dt">colour =</span> clarity)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw"><a href="reference/dev.off.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rasterpdf)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="reference/raster_pdf.html">raster_pdf</a></span>(<span class="st">"diamonds.pdf"</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price, <span class="dt">colour =</span> color)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price, <span class="dt">colour =</span> clarity)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw"><a href="reference/dev.off.html">dev.off</a></span>()</a></code></pre></div>
 <p>The output size and resolution can be set with parameters <code>width</code>, <code>height</code>, <code>units</code>, and <code>res</code>. The default is 7 x 7 inches and 72 ppi. Any other parameters (<code>...</code>) are passed through to the PNG device function. By default this is <code><a href="https://rdrr.io/r/grDevices/png.html">grDevices::png()</a></code>, but another function can also be specified, such <code><a href="https://ragg.r-lib.org/reference/agg_png.html">ragg::agg_png()</a></code>. The PDF file is by default generated with <code><a href="https://rdrr.io/r/grDevices/cairo.html">grDevices::cairo_pdf()</a></code> if cairo is available, and <code><a href="https://rdrr.io/r/grDevices/pdf.html">grDevices::pdf()</a></code> otherwise. Here again it is also possible to specify another function.</p>
 </div>
 </div>
@@ -114,6 +116,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rasterpdf">https://​cloud.r-project.org/​package=rasterpdf</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/ilarischeinin/rasterpdf">https://​github.com/​ilarischeinin/​rasterpdf</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/ilarischeinin/rasterpdf/issues">
