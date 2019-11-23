@@ -59,7 +59,7 @@ raster_pdf <- function(filename = "Rplots.pdf",
   width <- get_value_or_default("width", width)
   height <- get_value_or_default("height", height)
   units <- get_value_or_default("units", units)
-  res <- get_value_or_default("res", 72L)
+  res <- get_value_or_default("res", res)
 
   # As the PDF device grDevices::pdf() only takes width and height in inches,
   # convert from other units as needed so that we can provide more flexibility.
