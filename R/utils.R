@@ -89,7 +89,7 @@ has_filename_parameter <- function(pdf_function) {
 #' contains the pieces of information that need to be stored: the filename,
 #' width, and height of the resulting PDF, and the file name pattern of the
 #' intermediate PNG files.
-#' 
+#'
 #' @param device A named list with components `filename`, `width`, `height`,
 #'        and `pngs`.
 #' @inheritParams dev.off

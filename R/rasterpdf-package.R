@@ -5,7 +5,7 @@
 #' individual elements that use of vector graphics (with [grDevices::pdf()])
 #' results in inconveniently large file sizes. Internally, rasterpdf plots each
 #' individual page as a PNG, and then combines them in one PDF file.
-#' 
+#'
 #' @section Functions:
 #'
 #' [raster_pdf()] Opens a raster graphics PDF device.

@@ -15,7 +15,7 @@
 #' dev.off()
 #'
 #' @export
-dev.off <- function(which = grDevices::dev.cur()) {
+dev.off <- function(which = grDevices::dev.cur()) { # nolint
   # Check whether the graphics device in question is a raster PDF device.
   # As raster_pdf_device() is implemented with a closure, it is able to store
   # that state.
