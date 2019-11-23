@@ -17,7 +17,7 @@ individual page as a PNG, and then combines them in one PDF file.
 ## Installation
 
 `rasterpdf` can be installed from
-[CRAN](https://cran.r-project.org/web/packages/rasterpdf/index.html) with:
+[CRAN](https://cran.r-project.org/package=rasterpdf) with:
 
 ```r
 install.packages("rasterpdf")
