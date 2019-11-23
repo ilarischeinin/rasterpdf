@@ -5,9 +5,16 @@
 \alias{agg_pdf}
 \title{Raster PDF graphics device (with PNG pages)}
 \usage{
-raster_pdf(filename = "Rplots.pdf", width = NULL, height = NULL,
-  units = NULL, res = NULL, png_function = NULL,
-  pdf_function = NULL, ...)
+raster_pdf(
+  filename = "Rplots.pdf",
+  width = NULL,
+  height = NULL,
+  units = NULL,
+  res = NULL,
+  png_function = NULL,
+  pdf_function = NULL,
+  ...
+)
 
 agg_pdf(...)
 }

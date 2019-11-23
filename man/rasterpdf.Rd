@@ -3,7 +3,6 @@
 \docType{package}
 \name{rasterpdf}
 \alias{rasterpdf}
-\alias{rasterpdf-package}
 \title{rasterpdf: Plot Raster Graphics in PDFs.}
 \description{
 rasterpdf is an R package to plot raster graphics in PDF files. This can be
