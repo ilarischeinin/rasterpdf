@@ -4,7 +4,7 @@
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 ![CRAN status](https://www.r-pkg.org/badges/version-last-release/rasterpdf)
 [![Travis build status](https://travis-ci.org/ilarischeinin/rasterpdf.svg?branch=master)](https://travis-ci.org/ilarischeinin/rasterpdf)
-[![Codecov test coverage](https://codecov.io/gh/ilarischeinin/rasterpdf/branch/master/graph/badge.svg)](https://codecov.io/gh/ilarischeinin/rasterpdf?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/ilarischeinin/rasterpdf/branch/master/graph/badge.svg)](https://codecov.io/gh/ilarischeinin/rasterpdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
