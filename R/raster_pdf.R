@@ -32,7 +32,7 @@
 #'        `getOption("rasterpdf.res")` if set, and default to `72L` otherwise.
 #' @param png_function A PNG device function. If `NULL`, use [grDevices::png()].
 #' @param pdf_function A PDF device function. If `NULL`, use
-#'        [grDevices::cairo_pdf()] if it is available, and [grDevices::png()]
+#'        [grDevices::cairo_pdf()] if it is available, and [grDevices::pdf()]
 #'        otherwise.
 #' @param ... Further arguments passed through to the PNG device function
 #'        specified in `png_function`.

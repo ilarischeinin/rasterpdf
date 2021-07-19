@@ -38,7 +38,7 @@ value of \code{getOption("rasterpdf.units")} if set, and default to "in"
 \item{png_function}{A PNG device function. If \code{NULL}, use \code{\link[grDevices:png]{grDevices::png()}}.}
 
 \item{pdf_function}{A PDF device function. If \code{NULL}, use
-\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and \code{\link[grDevices:png]{grDevices::png()}}
+\code{\link[grDevices:cairo]{grDevices::cairo_pdf()}} if it is available, and \code{\link[grDevices:pdf]{grDevices::pdf()}}
 otherwise.}
 
 \item{...}{Further arguments passed through to the PNG device function
@@ -58,7 +58,7 @@ Internally, the function plots each individual page in a PNG file, which are
 then combined into one PDF file when \code{\link[=dev.off]{dev.off()}} is called. By default, the
 PNGs are generated with \code{\link[grDevices:png]{grDevices::png()}}, but another device function can
 also be specified. The PDF is by default generated with
-\code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}} if it is available, and
+\code{\link[grDevices:cairo]{grDevices::cairo_pdf()}} if it is available, and
 \code{\link[grDevices:pdf]{grDevices::pdf()}} otherwise. Again, it is possible to specify another PDF
 device function.
 
@@ -72,6 +72,6 @@ dev.off()
 
 }
 \seealso{
-\code{\link[grDevices:pdf]{grDevices::pdf()}}, \code{\link[grDevices:cairo_pdf]{grDevices::cairo_pdf()}},
+\code{\link[grDevices:pdf]{grDevices::pdf()}}, \code{\link[grDevices:cairo]{grDevices::cairo_pdf()}},
 \code{\link[grDevices:png]{grDevices::png()}}, \code{\link[ragg:agg_png]{ragg::agg_png()}}
 }
