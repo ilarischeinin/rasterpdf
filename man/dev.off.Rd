@@ -11,9 +11,9 @@ dev.off(which = grDevices::dev.cur())
 current device.}
 }
 \description{
-Please see the manual page for \code{\link[grDevices:dev.off]{grDevices::dev.off()}}. Package \code{rasterpdf}
+Please see the manual page for \code{\link[grDevices:dev]{grDevices::dev.off()}}. Package \code{rasterpdf}
 overrides the function in order to provide functionality of \code{\link[=raster_pdf]{raster_pdf()}},
-but internally calls \code{\link[grDevices:dev.off]{grDevices::dev.off()}}.
+but internally calls \code{\link[grDevices:dev]{grDevices::dev.off()}}.
 }
 \examples{
 raster_pdf(tempfile(fileext = ".pdf"))
@@ -22,5 +22,5 @@ dev.off()
 
 }
 \seealso{
-\code{\link[grDevices:dev.off]{grDevices::dev.off()}}
+\code{\link[grDevices:dev]{grDevices::dev.off()}}
 }
